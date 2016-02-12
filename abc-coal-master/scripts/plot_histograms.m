@@ -6,9 +6,13 @@ final = 24 * 7;
 load_data = 1;
 
 if load_data
-    load('C:\Users\kraemerd17\Documents\abc-coal-master\data\cost_array.mat');
-    load('C:\Users\kraemerd17\Documents\abc-coal-master\data\crew_array.mat');
-    load('C:\Users\kraemerd17\Documents\abc-coal-master\data\demurrage_array.mat');
+    load('~/mat306/project-01/abc-coal-master/data/cost_array.mat');
+    load('~/mat306/project-01/abc-coal-master/data/crew_array.mat');
+    load('~/mat306/project-01/abc-coal-master/data/demurrage_array.mat');
+
+    %load('C:\Users\kraemerd17\Documents\abc-coal-master\data\cost_array.mat');
+    %load('C:\Users\kraemerd17\Documents\abc-coal-master\data\crew_array.mat');
+    %load('C:\Users\kraemerd17\Documents\abc-coal-master\data\demurrage_array.mat');
 else
     cost = zeros(3, sims, final);
     demurrage = zeros(3, sims, final);
@@ -50,13 +54,13 @@ monthly_std = 4 * std(cost(:,:,end).');
 
 for config = 1:3
     face_color = [0.7 0.7 0.7];
-    title_str = sprintf('\\fontsize{12}Weekly costs for configuration %d (%d sims)', config, sims);
-    path_str = sprintf('C:\\Users\\kraemerd17\\Documents\\abc-coal-master\\plots\\cost_histogram_config_%d.png', config);
+    title_str = sprintf('\\fontsize{18}Weekly costs for configuration %d (%d sims)', config, sims);
+    path_str = sprintf('~/mat306/project-01/abc-coal-master/plots/cost_histogram_config_%d.png', config);
+    %path_str = sprintf('C:\\Users\\kraemerd17\\Documents\\abc-coal-master\\plots\\cost_histogram_config_%d.png', config);
 
-    histogram(cost(config,:,end).','Normalization','probability','FaceColor', face_color);
+    hist(cost(config,:,end).','Normalization','probability','FaceColor', face_color);
     title(title_str);
-    xlabel('\fontsize{12}Cost ($)');
-    ylabel('\fontsize{12}Frequency');
+    xlabel('\fontsize{18}Cost ($)');
     saveas(gcf, path_str);
 end
 
